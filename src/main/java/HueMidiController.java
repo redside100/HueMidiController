@@ -96,10 +96,6 @@ public class HueMidiController {
             if (!toggle){
                 reset();
             }
-
-            for (int remove : toggleTrigger){
-                activeKeys.remove(remove);
-            }
         }
     }
     private static boolean checkChord(ArrayList<Integer> chord){
