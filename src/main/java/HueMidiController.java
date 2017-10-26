@@ -25,6 +25,7 @@ public class HueMidiController {
     private static ArrayList<Integer> lightsOff = new ArrayList<>();
     private static ArrayList<Integer> toggleTrigger = new ArrayList<>();
     private static boolean toggle = false;
+    private static int lastHue = -1;
 
     public static void main(String[] args){
         new MidiListener();
@@ -76,7 +77,12 @@ public class HueMidiController {
          * Since the first key id is 21, 21 should be subtracted from the factor
          */
         int hue = ((52530 / 88) * (key - 21));
-        setColor(hue);
+
+        // Check for repeating notes to prevent some useless calls
+        if (lastHue != hue){
+            setColor(hue);
+            lastHue = hue;
+        }
     }
 
     private static void checkTriggers(){
