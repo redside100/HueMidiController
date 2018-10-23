@@ -32,7 +32,9 @@ public class MidiListener {
                 System.out.println(midiDevice.getDeviceInfo() + " connection opened!");
 
 
-            } catch (MidiUnavailableException e) {}
+            } catch (MidiUnavailableException e) {
+                System.out.println("Exception!");
+            }
         }
 
 
